@@ -6,7 +6,7 @@ import Modal from "./Modal";
 
 const CoffeeGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 3em;
   row-gap: 6em;
   padding: 30px;
@@ -37,8 +37,10 @@ function Coffee() {
       </CoffeeGrid>
       <Modal
         active={active}
+        setActive={setActive}
         name={selectedItem.name}
         price={selectedItem.price}
+        description={selectedItem.description}
         image={selectedItem.image}
       />
     </div>

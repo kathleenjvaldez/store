@@ -4,7 +4,7 @@ import wellnessItems from "./wellnessItems";
 
 const ShopDiv = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 4em;
   row-gap: 6em;
   padding: 50px;

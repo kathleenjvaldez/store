@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ReactComponent as UserIcon } from "../assets/icons/account.svg";
 import { ReactComponent as BagIcon } from "../assets/icons/bag.svg";
+import { ReactComponent as SearchIcon } from "../assets/icons/search.svg";
 
 import Image2 from "../images/Logo3.png";
 
@@ -51,6 +52,10 @@ const NavDiv = styled.nav`
 
   .cart {
     padding-left: 25px;
+  }
+
+  .search {
+    padding-right: 25px;
   }
 `;
 
@@ -114,6 +119,9 @@ function Nav() {
       </div>
       <div className="cartLogin">
         <ul className="cartBag">
+          <li className="search">
+            <SearchIcon style={{ height: "23px" }} />
+          </li>
           <li className="login">
             <UserIcon style={{ height: "23px" }} />
           </li>
@@ -139,7 +147,6 @@ function Nav() {
                 Coffee
               </Link>
               <Link className="menu">Apparel</Link>
-              <Link className="menu">Stationery</Link>
               <Link to="/wellness" className="menu">
                 Wellness
               </Link>

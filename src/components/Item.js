@@ -20,6 +20,7 @@ const ItemDiv = styled.div`
   p {
     font-size: 0.95em;
     padding-top: 20px;
+    font-weight: 300;
   }
 `;
 
@@ -30,6 +31,7 @@ function Item(props) {
         <img src={props.image} alt="soap" />
       </div>
       <h3>{props.name}</h3>
+      <h4>{props.description}</h4>
       <p>${props.price.toFixed(2)}</p>
     </ItemDiv>
   );
