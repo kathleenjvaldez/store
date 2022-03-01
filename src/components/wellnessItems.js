@@ -3,6 +3,7 @@ import FacialMist from "../images/AloeFacialMist.jpeg";
 import DryShampoo from "../images/DryShampoo.jpeg";
 import HandBodyWash from "../images/HairBodySoap.jpeg";
 import Deodorant from "../images/Deodorant.png";
+import MineralBath from "../images/MineralBath.jpeg";
 
 const wellnessItems = [
   {
@@ -34,6 +35,12 @@ const wellnessItems = [
     name: "Deodorant - Lavender and Sage",
     price: 12.95,
     image: Deodorant,
+  },
+  {
+    key: 6,
+    name: "Mineral Bath",
+    price: 22.95,
+    image: MineralBath,
   },
 ];
 

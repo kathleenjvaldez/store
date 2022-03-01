@@ -11,6 +11,7 @@ const ModalStyled = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
+  z-index: 4;
 
   img {
     width: 400px;
@@ -33,6 +34,7 @@ const ModalStyled = styled.div`
     font-size: 25px;
     margin-top: 20px;
     padding: 10px;
+    letter-spacing: 0.1em;
   }
 
   h4 {
@@ -58,7 +60,7 @@ const ModalStyled = styled.div`
   }
 
   .quantity {
-    padding-bottom: 20px;
+    padding: 2rem 0;
   }
 
   button {
@@ -82,35 +84,50 @@ const ModalStyled = styled.div`
   }
 `;
 
+const Background = styled.div`
+  display: ${(props) => (props.active ? "block" : "none")};
+  opacity: 0.6;
+  background-color: black;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 3;
+`;
+
 function Modal(props) {
   return (
-    <ModalStyled active={props.active}>
-      <div className="content">
-        <img src={props.image} />
-        <div className="description">
-          <h3>{props.name}</h3>
-          <p>${props.price}</p>
-          <h4>{props.description}</h4>
-          <div className="quantity">
-            <label>Quantity:</label>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="0"
-              max="30"
+    <div>
+      <ModalStyled active={props.active}>
+        <div className="content">
+          <img src={props.image} />
+          <div className="description">
+            <h3>{props.name}</h3>
+            <p>${props.price}</p>
+            <h4>{props.description}</h4>
+            <div className="quantity">
+              <label>Quantity:</label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="30"
+              />
+            </div>
+            <button className="bag">ADD TO BAG</button>
+            <XIcon
+              className="xstyle"
+              onClick={() => {
+                props.setActive(false);
+              }}
             />
           </div>
-          <button>ADD TO BAG</button>
-          <XIcon
-            className="xstyle"
-            onClick={() => {
-              props.setActive(false);
-            }}
-          />
         </div>
-      </div>
-    </ModalStyled>
+      </ModalStyled>
+      <Background active={props.active} />
+    </div>
   );
 }
 

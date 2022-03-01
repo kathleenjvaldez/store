@@ -14,17 +14,17 @@ const ShopDiv = styled.div`
   position: relative;
 `;
 
-function Wellness() {
+function Apparel() {
   const [selectedItem, setSelectedItem] = useState({});
   const [active, setActive] = useState(false);
-  const [wellnessItems, setWellnessItems] = useState([]);
+  const [apparelItems, setApparelItems] = useState([]);
 
   const fetchMyAPI = useCallback(async () => {
     let response = await http.get("/products", {
-      params: { category: "wellness" },
+      params: { category: "apparel" },
     });
 
-    setWellnessItems(response.data);
+    setApparelItems(response.data);
   }, []);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function Wellness() {
   return (
     <div>
       <ShopDiv>
-        {wellnessItems.map((item) => (
+        {apparelItems.map((item) => (
           <Item
             onClick={() => handleClick(item)}
             key={item.key}
@@ -60,4 +60,4 @@ function Wellness() {
   );
 }
 
-export default Wellness;
+export default Apparel;

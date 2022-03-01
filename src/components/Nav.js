@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ReactComponent as UserIcon } from "../assets/icons/account.svg";
 import { ReactComponent as BagIcon } from "../assets/icons/bag.svg";
 import { ReactComponent as SearchIcon } from "../assets/icons/search.svg";
 
 import Image2 from "../images/Logo3.png";
 
+import { CartContext } from "../App";
+
 const NavDiv = styled.nav`
   color: white;
   font-weight: 300;
   background-color: white;
+  letter-spacing: 0.1em;
 
   .navbar {
     display: flex;
@@ -57,13 +60,31 @@ const NavDiv = styled.nav`
   .search {
     padding-right: 25px;
   }
+
+  .cartcount {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 1em;
+    margin-top: -0.5em;
+    margin-left: -1em;
+    border-radius: 1em;
+    padding: 0.5em;
+    background-color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    text-align: center;
+    line-height: 1em;
+    font-size: 11.25px;
+    font-weight: 400;
+  }
 `;
 
 const ShopDiv = styled.div`
   height: 60px;
   background-color: white;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid rgba(100, 100, 100, 0.1);
+  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
 
   .menuItems {
     color: #052422;
@@ -86,7 +107,7 @@ const DropDown = styled.div`
   background-color: white;
   width: 100px;
   top: 170px;
-  left: 110px;
+  left: 120px;
   padding-top: 10px;
   text-align: center;
   z-index: 1;
@@ -94,12 +115,15 @@ const DropDown = styled.div`
   .menu {
     color: #052422;
     display: block;
+    font-size: 0.9em;
     text-decoration: none;
-    padding: 5px;
+    padding: 10px;
   }
 `;
 
 function Nav() {
+  const { cart } = useContext(CartContext);
+
   const [expanded, setExpanded] = useState({ visibility: "hidden" });
 
   function mouseOver() {
@@ -123,10 +147,17 @@ function Nav() {
             <SearchIcon style={{ height: "23px" }} />
           </li>
           <li className="login">
-            <UserIcon style={{ height: "23px" }} />
+            <Link to="/login">
+              <UserIcon style={{ height: "23px" }} />
+            </Link>
           </li>
           <li className="cart">
-            <BagIcon style={{ height: "23px" }} />
+            <Link to="/cart">
+              <BagIcon style={{ height: "23px" }} />
+              {Object.keys(cart).length > 0 && (
+                <span className="cartcount">{Object.keys(cart).length}</span>
+              )}
+            </Link>
           </li>
         </ul>
       </div>
@@ -144,17 +175,19 @@ function Nav() {
           <DropDown style={expanded}>
             <ul>
               <Link to="/coffee" className="menu">
-                Coffee
+                COFFEE
               </Link>
-              <Link className="menu">Apparel</Link>
+              <Link to="/apparel" className="menu">
+                APPAREL
+              </Link>
               <Link to="/wellness" className="menu">
-                Wellness
+                WELLNESS
               </Link>
             </ul>
           </DropDown>
         </NavBar>
-        <Link to="/about">
-          <p className="menuItems">ABOUT</p>
+        <Link to="/menu">
+          <p className="menuItems">MENU</p>
         </Link>
       </ShopDiv>
     </NavDiv>

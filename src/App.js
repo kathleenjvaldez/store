@@ -1,25 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyles from "./GlobalStyles";
 
 import Nav from "./components/Nav";
-import About from "./components/About";
+import Menu from "./components/Menu";
 import Home from "./components/Home";
 import Coffee from "./components/Coffee";
+import Apparel from "./components/Apparel";
 import Wellness from "./components/Wellness";
+import Login from "./components/Login";
+import Cart from "./components/Cart";
+import Dev from "./components/Dev";
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+export const CartContext = React.createContext({});
+
 function App() {
+  const [cart, setCart] = useState({});
+
   return (
-    <Router>
-      <div>
-        <GlobalStyles />
-        <Nav />
-        <Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/coffee" component={Coffee} />
-        <Route path="/wellness" component={Wellness} />
-      </div>
-    </Router>
+    <CartContext.Provider value={{ cart, setCart }}>
+      <Router>
+        <div>
+          <GlobalStyles />
+          <Nav />
+          <Route path="/" exact component={Home} />
+          <Route path="/menu" component={Menu} />
+          <Route path="/coffee" component={Coffee} />
+          <Route path="/apparel" component={Apparel} />
+          <Route path="/wellness" component={Wellness} />
+          <Route path="/login" component={Login} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/dev" component={Dev} />
+          <Route path="" component={Footer} />
+        </div>
+      </Router>
+    </CartContext.Provider>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Image from "../images/CoffeeHomePage4.jpeg";
 
 const HomePage = styled.div`
@@ -30,6 +31,24 @@ const HomePage = styled.div`
     width: 50%;
     margin-left: 20px;
   }
+
+  .orderLink {
+    border: 1px solid #1c1d1d;
+    background-color: #efa693;
+    color: white;
+    font-weight: 300;
+    font-size: 0.9em;
+    padding: 15px;
+    text-align: center;
+    border-radius: 30px;
+    border: none;
+    margin-left: 10px;
+    position: absolute;
+    top: 75px;
+    left: 370px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+  }
 `;
 
 function Home() {
@@ -45,6 +64,9 @@ function Home() {
         <h1>Coffee delivered straight to your door</h1>
         <hr></hr>
         <p>Shipping or same day delivery available</p>
+        <Link to="/coffee" className="orderLink">
+          <a>Order Now</a>
+        </Link>
       </div>
     </HomePage>
   );

@@ -1,8 +1,9 @@
+import { useState, useEffect, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Item from "./Item";
-import coffeeItems from "./coffeeItems";
-import { useState } from "react";
 import Modal from "./Modal";
+
+import http from "../http";
 
 const CoffeeGrid = styled.div`
   display: grid;
@@ -10,16 +11,29 @@ const CoffeeGrid = styled.div`
   column-gap: 3em;
   row-gap: 6em;
   padding: 30px;
+  position: relative;
 `;
 
 function Coffee() {
   const [selectedItem, setSelectedItem] = useState({});
   const [active, setActive] = useState(false);
+  const [coffeeItems, setCoffeeItems] = useState([]);
+
+  const fetchMyAPI = useCallback(async () => {
+    let response = await http.get("/products", {
+      params: { category: "coffee" },
+    });
+
+    setCoffeeItems(response.data);
+  }, []);
+
+  useEffect(() => {
+    fetchMyAPI();
+  }, []);
 
   function handleClick(item) {
     setSelectedItem({ ...item });
     setActive(true);
-    console.log("clicked");
   }
 
   return (
@@ -28,9 +42,12 @@ function Coffee() {
         {coffeeItems.map((item) => (
           <Item
             onClick={() => handleClick(item)}
-            key={item.key}
+            key={item._id}
+            id={item._id}
             name={item.name}
+            description={item.description}
             price={item.price}
+            quantity={item.quantity}
             image={item.image}
           />
         ))}
