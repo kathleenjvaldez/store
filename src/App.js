@@ -9,7 +9,6 @@ import Apparel from "./components/Apparel";
 import Wellness from "./components/Wellness";
 import Login from "./components/Login";
 import Cart from "./components/Cart";
-import Dev from "./components/Dev";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -31,8 +30,7 @@ function App() {
           <Route path="/wellness" component={Wellness} />
           <Route path="/login" component={Login} />
           <Route path="/cart" component={Cart} />
-          <Route path="/dev" component={Dev} />
-          <Route path="" component={Footer} />
+          <Route path="/footer" component={Footer} />
         </div>
       </Router>
     </CartContext.Provider>
