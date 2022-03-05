@@ -38,13 +38,12 @@ const ItemDiv = styled.div`
     padding: 15px;
     text-align: center;
     position: absolute;
-    top: 4rem;
-    right: 2rem;
+    top: 12rem;
     letter-spacing: 0.1em;
   }
 
   .cartButton {
-    left: 50px;
+    left: 4rem;
   }
 `;
 

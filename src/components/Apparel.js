@@ -41,9 +41,12 @@ function Apparel() {
         {apparelItems.map((item) => (
           <Item
             onClick={() => handleClick(item)}
-            key={item.key}
+            key={item._id}
+            id={item._id}
             name={item.name}
+            description={item.description}
             price={item.price}
+            quantity={item.quantity}
             image={item.image}
           />
         ))}

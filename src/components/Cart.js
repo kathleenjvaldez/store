@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { ReactComponent as XIcon } from "../assets/icons/x.svg";
 
@@ -56,7 +56,7 @@ const CartPage = styled.div`
     font-weight: 300;
     font-size: 1rem;
     text-align: right;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
   }
 `;
 
@@ -117,7 +117,6 @@ function Cart() {
     setCart((cart) => ({
       ...copyOfObject,
     }));
-    console.log(cart);
   };
 
   function changeQuantity(event, itemId) {
@@ -125,6 +124,19 @@ function Cart() {
     currentCart[itemId].quantity = event.target.value;
     setCart({ ...currentCart });
   }
+
+  useEffect(() => {
+    if (Object.keys(cart).length > 0)
+      localStorage.setItem("itemId", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("itemId"));
+    if (savedCart) {
+      setCart(savedCart);
+    }
+    console.log(savedCart);
+  }, []);
 
   return (
     <CartPage>

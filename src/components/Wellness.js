@@ -42,8 +42,11 @@ function Wellness() {
           <Item
             onClick={() => handleClick(item)}
             key={item.key}
+            id={item._id}
             name={item.name}
+            description={item.description}
             price={item.price}
+            quantity={item.quantity}
             image={item.image}
           />
         ))}

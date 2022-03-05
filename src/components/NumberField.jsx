@@ -5,6 +5,8 @@ const NumberField = (props) => {
     <div>
       <input
         type="number"
+        min="1"
+        max="30"
         defaultValue={props.defaultValue}
         onChange={(e) => props.handleChange(e)}
       />

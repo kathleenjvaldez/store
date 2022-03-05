@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ReactComponent as XIcon } from "../assets/icons/x.svg";
+import { CartContext } from "../App";
+import NumberField from "./NumberField";
 
 const ModalStyled = styled.div`
   display: ${(props) => (props.active ? "block" : "none")};
@@ -97,6 +99,27 @@ const Background = styled.div`
 `;
 
 function Modal(props) {
+  const { cart, setCart } = useContext(CartContext);
+
+  function handleClick() {
+    // boolean of whether item already exists in cart or not
+    const itemExists = cart.hasOwnProperty(props.id);
+
+    let addedItem = {
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      description: props.description,
+      quantity: itemExists ? cart[props.id].quantity + 1 : 1,
+      image: props.image,
+    };
+
+    setCart({
+      ...cart,
+      [`${props.id}`]: addedItem,
+    });
+  }
+
   return (
     <div>
       <ModalStyled active={props.active}>
@@ -116,7 +139,10 @@ function Modal(props) {
                 max="30"
               />
             </div>
-            <button className="bag">ADD TO BAG</button>
+            <button className="bag" onClick={() => handleClick()}>
+              ADD TO BAG
+            </button>
+
             <XIcon
               className="xstyle"
               onClick={() => {
