@@ -30,20 +30,22 @@ const ItemDiv = styled.div`
 
   .itemButton,
   .cartButton {
+    display: flex;
+    position: absolute;
     background-color: rgba(117 113 113 / 60%);
     border: none;
     color: white;
     font-weight: 300;
     font-size: 0.7em;
-    padding: 15px;
+    padding: 15px 5px;
     text-align: center;
-    position: absolute;
     top: 12rem;
+    left: 3.5rem;
     letter-spacing: 0.1em;
   }
 
   .cartButton {
-    left: 4rem;
+    left: 9.5rem;
   }
 `;
 

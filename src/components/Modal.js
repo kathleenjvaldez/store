@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { ReactComponent as XIcon } from "../assets/icons/x.svg";
 import { CartContext } from "../App";
-import NumberField from "./NumberField";
 
 const ModalStyled = styled.div`
   display: ${(props) => (props.active ? "block" : "none")};
@@ -76,6 +75,7 @@ const ModalStyled = styled.div`
     border-color: gray;
     letter-spacing: 0.1em;
     margin-left: 10px;
+    margin-top: 30px;
   }
 
   .xstyle {
@@ -129,7 +129,7 @@ function Modal(props) {
             <h3>{props.name}</h3>
             <p>${props.price}</p>
             <h4>{props.description}</h4>
-            <div className="quantity">
+            {/* <div className="quantity">
               <label>Quantity:</label>
               <input
                 type="number"
@@ -138,7 +138,7 @@ function Modal(props) {
                 min="0"
                 max="30"
               />
-            </div>
+            </div> */}
             <button className="bag" onClick={() => handleClick()}>
               ADD TO BAG
             </button>

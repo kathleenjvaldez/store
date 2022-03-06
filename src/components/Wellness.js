@@ -6,12 +6,12 @@ import Modal from "./Modal";
 import http from "../http";
 
 const ShopDiv = styled.div`
+  max-width: 1350px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 3em;
-  row-gap: 6em;
-  padding: 30px;
-  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 0.2fr;
+  grid-gap: 50px;
 `;
 
 function Wellness() {

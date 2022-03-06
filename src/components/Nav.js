@@ -169,9 +169,7 @@ function Nav() {
           <p className="menuItems">HOME</p>
         </Link>
         <NavBar onMouseOver={mouseOver} onMouseOut={mouseOut}>
-          <Link>
-            <p className="menuItems">SHOP</p>
-          </Link>
+          <p className="menuItems">SHOP</p>
           <DropDown style={expanded}>
             <ul>
               <Link to="/coffee" className="menu">

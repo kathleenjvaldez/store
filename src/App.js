@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 
 import Nav from "./components/Nav";
@@ -10,9 +11,19 @@ import Wellness from "./components/Wellness";
 import Login from "./components/Login";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export const CartContext = React.createContext({});
+
+const AppStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex: 1;
+  }
+`;
 
 function App() {
   const [cart, setCart] = useState({});
@@ -20,18 +31,22 @@ function App() {
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       <Router>
-        <div>
+        <AppStyled>
           <GlobalStyles />
           <Nav />
-          <Route path="/" exact component={Home} />
-          <Route path="/menu" component={Menu} />
-          <Route path="/coffee" component={Coffee} />
-          <Route path="/apparel" component={Apparel} />
-          <Route path="/wellness" component={Wellness} />
-          <Route path="/login" component={Login} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/footer" component={Footer} />
-        </div>
+          <main>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/menu" component={Menu} />
+              <Route path="/coffee" component={Coffee} />
+              <Route path="/apparel" component={Apparel} />
+              <Route path="/wellness" component={Wellness} />
+              <Route path="/login" component={Login} />
+              <Route path="/cart" component={Cart} />
+            </Switch>
+          </main>
+          <Footer />
+        </AppStyled>
       </Router>
     </CartContext.Provider>
   );
