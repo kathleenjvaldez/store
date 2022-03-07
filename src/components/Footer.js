@@ -80,7 +80,7 @@ function Footer() {
   return (
     <CopyrightFooter>
       <div className="footer">
-        <Link to="/">
+        {/* <Link to="/">
           <li className="links">HOME</li>
         </Link>
         <Link to="/coffee">
@@ -91,7 +91,7 @@ function Footer() {
         </Link>
         <Link to="/login">
           <li className="links">ACCOUNT</li>
-        </Link>
+        </Link> */}
         <div className="newsletter">
           <h1>Join our Newsletter</h1>
           <p>

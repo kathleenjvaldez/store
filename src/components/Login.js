@@ -2,10 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const LoginPage = styled.div`
-  position: absolute;
-  top: 300px;
-  left: 400px;
-  letter-spacing: 0.1em;
+  position: relative;
+  top: 50px;
+  left: 500px;
+  letter-spacing: 0.12em;
+
+  .login {
+    display: block;
+    margin: 2rem 0;
+  }
 
   h1 {
     font-weight: 400;
@@ -21,7 +26,6 @@ const LoginPage = styled.div`
     padding: 1rem;
     text-align: center;
     border-color: gray;
-    position: relative;
     border: none;
     border-radius: 30px;
     background-color: #efa693;
@@ -32,22 +36,24 @@ const LoginPage = styled.div`
 function Login() {
   return (
     <LoginPage>
-      <h1>Customer Login</h1>
-      <form>
-        <br />
-        <input type="text" id="email" name="email" placeholder="Email" />
-        <br />
-        <br />
-        <input
-          type="text"
-          id="password"
-          name="password"
-          placeholder="Password"
-        />
-        <br />
-        <br />
-      </form>
-      <button>Sign In</button>
+      <div className="login">
+        <h1>Customer Login</h1>
+        <form>
+          <br />
+          <input type="text" id="email" name="email" placeholder="Email" />
+          <br />
+          <br />
+          <input
+            type="text"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+          <br />
+          <br />
+        </form>
+        <button>Sign In</button>
+      </div>
     </LoginPage>
   );
 }

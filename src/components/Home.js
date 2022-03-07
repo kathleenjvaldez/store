@@ -70,6 +70,14 @@ const Section = styled.div`
     line-height: 1.8;
     padding: 0 10rem;
   }
+
+  .about {
+    margin-bottom: 4rem;
+  }
+
+  .address {
+    margin-top: 1 rem;
+  }
 `;
 
 function Home() {
@@ -87,13 +95,18 @@ function Home() {
       </HomePage>
       <Section>
         <h2>About Us</h2>
-        <p>
+        <p className="about">
           Collective Coffee is a creative-minded café & shop with multiple
           locations based in Southern California. With an emphasis on inspiring
           and caring for the local community, we offer a full craft coffee and
           drink menu, seasonal food menu, creatively-designed spaces, and
           curated goods.
         </p>
+        <h2>Hours & Location</h2>
+        <p>Sunday - Thursday: 7 A.M. - 2.30 P.M.</p>
+        <p>Friday - Saturday: 7 A.M. - 3 P.M.</p>
+        <br></br>
+        <p className="address">755 Fifth Ave San Diego, CA 92106</p>
       </Section>
     </div>
   );
